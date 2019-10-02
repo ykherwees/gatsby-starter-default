@@ -5,17 +5,26 @@ import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Sara Lashnuk Fan  Club</h1>
-    <p>Welcome to the club!</p>
-    <p>Please excuse our mess!</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
+const cheerio = require('cheerio')
+
+
+const IndexPage = () => {
+    const $ = cheerio.load('http://www.icoi.net/prayer-times-2/')
+    console.log($.text())
+    const titleText = $('h1').text()
+    return (
+        <Layout>
+            <SEO title="Home" />
+            <h1>Sara Lashnuk Fan  Club</h1>
+            <p>Welcome to the club!</p>
+            <p>{titleText}</p>
+            <p>Please excuse our mess!</p>
+            <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
+            <Image />
+            </div>
+            <Link to="/page-2/">Go to page 2</Link>
+        </Layout>
 )
+}
 
 export default IndexPage
