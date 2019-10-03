@@ -13,7 +13,7 @@ const IndexPage = () => {
 
 
 
-    axios.get('http://www.icoi.net/prayer-times-2/').then((response) => {
+    axios.get('https://www.icoi.net/prayer-times-2/').then((response) => {
             console.log(response.data)
     })
     return (
