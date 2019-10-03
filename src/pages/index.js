@@ -6,18 +6,21 @@ import Image from "../components/image"
 import SEO from "../components/seo"
 
 const cheerio = require('cheerio')
+const axios = require('axios')
 
 
 const IndexPage = () => {
-    const $ = cheerio.load('http://www.icoi.net/prayer-times-2/')
-    console.log($.text())
-    const titleText = $('h1').text()
+
+
+
+    axios.get('http://www.icoi.net/prayer-times-2/').then((response) => {
+            console.log(response.data)
+    })
     return (
         <Layout>
             <SEO title="Home" />
             <h1>Sara Lashnuk Fan  Club</h1>
             <p>Welcome to the club!</p>
-            <p>{titleText}</p>
             <p>Please excuse our mess!</p>
             <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
             <Image />
